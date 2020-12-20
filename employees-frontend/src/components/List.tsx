@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
+import EmployeeService from '../services/EmployeeService'
 
 const List = () => {
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/v1/employees")
+    EmployeeService.getEmployees()
       .then((response) => response.json())
       .then((data) => setEmployees(data));
   },[]);
@@ -12,7 +13,7 @@ const List = () => {
   return (
     <div className="row">
       <h1>Employees List</h1>
-      <table className="table">
+      <table className="table table-striped table-bordered">
         <thead>
           <tr>
             <th>Employee First Name</th>
