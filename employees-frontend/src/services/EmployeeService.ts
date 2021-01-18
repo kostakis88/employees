@@ -4,7 +4,15 @@ class EmployeeService {
   
   getEmployees = () => {
     return fetch(EMPLOYEE_API_BASE_URL)
-  } 
+  }
+
+  createEmployee = (employee: object) => {
+    return fetch(EMPLOYEE_API_BASE_URL, {
+      method: "POST",
+      body: JSON.stringify(employee),
+      headers: {"Content-type": "application/json; charset=UTF-8"}
+    })
+  }
 
 }
 

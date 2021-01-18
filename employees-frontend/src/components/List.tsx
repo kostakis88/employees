@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import EmployeeService from '../services/EmployeeService'
 
-const List = () => {
+interface ListProps {
+  history: Array<string>
+}
+
+const List: React.FC<ListProps> = (props) => {
+  const { history } = props
+
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
@@ -10,8 +16,13 @@ const List = () => {
       .then((data) => setEmployees(data));
   },[]);
 
+  const addEmployee = () => {
+    history.push('/add-employee')    
+  }
+
   return (
     <div className="row">
+      <button className="btn btn-primary" onClick={addEmployee}>Add Employee</button>
       <h1>Employees List</h1>
       <table className="table table-striped table-bordered">
         <thead>
