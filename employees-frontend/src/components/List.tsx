@@ -20,6 +20,10 @@ const List: React.FC<ListProps> = (props) => {
     history.push('/add-employee')    
   }
 
+  const handleUpdate = (employee: number) => {
+    history.push(`/update-employee/${employee}`)
+  }
+
   return (
     <div className="row">
       <button className="btn btn-primary" onClick={addEmployee}>Add Employee</button>
@@ -40,6 +44,7 @@ const List: React.FC<ListProps> = (props) => {
                 <td>{employee.firstName}</td>
                 <td>{employee.lastName}</td>
                 <td>{employee.email}</td>
+                <td><button onClick={() => handleUpdate(employee.id)}>Update</button></td>
               </tr>
             );
           })}

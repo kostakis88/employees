@@ -6,6 +6,16 @@ class EmployeeService {
     return fetch(EMPLOYEE_API_BASE_URL)
   }
 
+  getEmployeeById = (employee: string) => {
+    return fetch(EMPLOYEE_API_BASE_URL + '/' + employee)
+    .then((response) => { 
+      return response.json() 
+    })
+    .then((data) => {
+      return data
+    })
+  }
+
   createEmployee = (employee: object) => {
     return fetch(EMPLOYEE_API_BASE_URL, {
       method: "POST",
