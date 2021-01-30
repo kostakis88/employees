@@ -24,6 +24,18 @@ class EmployeeService {
     })
   }
 
+  updateEmployee = (employee: object, employeeId: string) => {
+    const requestOptions = {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },  
+      body: JSON.stringify(employee)
+    }
+    return fetch(EMPLOYEE_API_BASE_URL + '/' + employeeId, requestOptions).then(response => response.json()).then((data) => {  console.log('data ', data) })
+  }
+
 }
 
 export default new EmployeeService()

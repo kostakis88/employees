@@ -33,7 +33,9 @@ const UpdateEmployee: React.FC<UpdateEmployeeProps> = (props) => {
   const handleUpdate = (ev: React.MouseEvent) => {
     ev.preventDefault()
     let employee = { firstName: firstName, lastName: lastName, email: email }
-    console.log('employee =>', JSON.stringify(employee))
+    EmployeeService.updateEmployee(employee, id).then((res) => {
+      history.push('/employees')
+    })
   }
 
   const handleCancel = () => {
