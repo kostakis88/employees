@@ -24,6 +24,14 @@ const List: React.FC<ListProps> = (props) => {
     history.push(`/update-employee/${employee}`)
   }
 
+  const handleDelete = (employeeId: string) => {
+    EmployeeService.deleteEmployee(employeeId).then(res => {
+      setEmployees(employees.filter((employee: any) => {
+        return employee.id !== employeeId
+      }))
+    })
+  }
+
   return (
     <div className="row">
       <button className="btn btn-primary" onClick={addEmployee}>Add Employee</button>
@@ -44,7 +52,10 @@ const List: React.FC<ListProps> = (props) => {
                 <td>{employee.firstName}</td>
                 <td>{employee.lastName}</td>
                 <td>{employee.email}</td>
-                <td><button onClick={() => handleUpdate(employee.id)}>Update</button></td>
+                <td>
+                  <button className="btn btn-info" onClick={() => handleUpdate(employee.id)}>Update</button>
+                  <button className="btn btn-danger" onClick={() => handleDelete(employee.id)}>Delete</button>
+                </td>
               </tr>
             );
           })}

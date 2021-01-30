@@ -33,7 +33,16 @@ class EmployeeService {
       },  
       body: JSON.stringify(employee)
     }
-    return fetch(EMPLOYEE_API_BASE_URL + '/' + employeeId, requestOptions).then(response => response.json()).then((data) => {  console.log('data ', data) })
+    return fetch(EMPLOYEE_API_BASE_URL + '/' + employeeId, requestOptions)
+    .then(response => response.json())
+  }
+
+  deleteEmployee = (employeeId: string) => {
+    const requestOptions = {
+      method: 'DELETE'
+    }
+    return fetch(EMPLOYEE_API_BASE_URL + '/' + employeeId, requestOptions)
+    .then(response => response.json())
   }
 
 }
