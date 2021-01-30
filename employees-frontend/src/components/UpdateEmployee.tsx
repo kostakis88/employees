@@ -13,7 +13,7 @@ type Params = { id: string };
 const UpdateEmployee: React.FC<UpdateEmployeeProps> = (props) => {
   const { history, match } = props
 
-  const [id, setId] = useState<string>(match.params.id)
+  const id = match.params.id
   const [firstName, setFirstName] = useState<string>('')
   const [lastName, setLastName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
